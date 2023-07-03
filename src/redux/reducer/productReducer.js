@@ -92,8 +92,37 @@ const initialState = {
       image: "https://shop.cyberlearn.vn/images/adidas-swift-run.png",
     },
   ],
+  arrCart: [],
 };
 
 export const productReducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case "ADDTOCART":
+      // C2
+      // console.log(action);
+      // ! immutable: bất biến
+      // todo: check sp in the shopping cart
+      const index = state.arrCart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      const newArrCart = [...state.arrCart];
+      // newArrCart.push(action.payload);
+
+      if (index === -1) {
+        newArrCart.push({ ...action.payload, number: 1 });
+      } else {
+        newArrCart[index] = {
+          ...newArrCart[index],
+          number: newArrCart[index].number + 1,
+        };
+      }
+      return {
+        ...state,
+        arrCart: newArrCart,
+      };
+
+    default:
+      return state;
+  }
 };

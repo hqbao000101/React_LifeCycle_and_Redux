@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import React, { Component } from "react";
+import { NavLink, Outlet } from "react-router-dom";
+import CardModal from "../Pages/ShoesStore/CardModal";
 
 export default class HomeTemplate extends Component {
   render() {
     return (
       <>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-          <NavLink className="navbar-brand" to='/'>
+          <NavLink className="navbar-brand" to="/">
             Navbar
           </NavLink>
           <button
@@ -49,22 +50,19 @@ export default class HomeTemplate extends Component {
               </li>
             </ul>
             <form className="d-flex my-2 my-lg-0">
-              <input
-                className="form-control me-sm-2"
-                type="text"
-                placeholder="Search"
-              />
               <button
-                className="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
+                type="button"
+                className="btn btn-primary me-3"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
               >
-                Search
+                <i className="fa-solid fa-cart-shopping"></i>
               </button>
             </form>
           </div>
         </nav>
-
         <Outlet />
+        <CardModal />
         <footer className="bg-dark text-white">Footer</footer>
       </>
     );
